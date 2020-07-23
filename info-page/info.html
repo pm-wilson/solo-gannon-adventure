@@ -2,17 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/home.css" />
-    <title>User Adventure</title>
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
+    <link rel="stylesheet" href="./info-styles.css" />
+    <title>User Adventure Info Page</title>
   </head>
 
   <body>
-    <header>Welcome Screen</header>
+    <header>Info Page</header>
 
     <main>
-      <section class="main-section"></section>
+      <section class="info-description-section">
+        <h1>Character Design</h1>
+        <p>Filling out your application, you enter your information as..</p>
+      </section>
+      <section class="character-setup-section">
+        <form id="player-setup-form">
+          <span>Name: </span><input name="player-name" id="player-name" />
+
+          <p>Adventuring Angle:</p>
+          <label class="class-option">
+            <span>Fighter (Good at providing muscle): </span
+            ><input type="radio" name="type" value="0" /><br />
+          </label>
+          <label class="class-option">
+            <span>Wizard (Good at using magic to solve problems): </span
+            ><input type="radio" name="type" value="1" /><br />
+          </label>
+          <label class="class-option">
+            <span>Bard (Good at entertaining the crowd): </span
+            ><input type="radio" name="type" value="2" /><br />
+          </label>
+          <label class="class-option">
+            <span>Druid (Good at compelling nature to your bidding): </span
+            ><input type="radio" name="type" value="3" /><br />
+          </label>
+
+          <button>Submit</button>
+        </form>
+      </section>
     </main>
 
     <footer>
