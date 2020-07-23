@@ -13,3 +13,7 @@ form {
 .equipment-option {
   display: block;
 }
+
+label {
+  display: block;
+}

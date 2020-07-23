@@ -1,7 +1,17 @@
+import { makeUser, saveToLocalStorage, loadFromLocalStorage } from '../userUtils.js';
 
-const formData = document.querySelector('#player-setup-form');
+const form = document.querySelector('form');
 
-formData.addEventListener('submit', () => {
-    console.log('submit')
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const user = makeUser(formData);
+
+    saveToLocalStorage(user);
+
+
+    console.log(loadFromLocalStorage());
 });
 
