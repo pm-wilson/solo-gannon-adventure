@@ -2,22 +2,17 @@ const monsters = {
     id: 'monsters',
     title: 'A Den of Monsters',
     map: {
-        top: '89%',
+        top: '79%',
         left: '44%'
     },
     image: 'monsters.jpg',
-    description: `
-        You enter the quest chamber only to be confronted by a hoard of
-        monsters. And they look hungry. What do you do?
-    `,
+    description: `You enter the quest chamber only to be confronted by a hoard of monsters. And they look hungry. What do you do?`,
     choices: [{
         id: 'negotiate',
         description: 'Negotiate with them',
-        result: `
-            Knowing the monsters are not too bright, you offer to go buy them all
+        result: `Knowing the monsters are not too bright, you offer to go buy them all
             turkey dinners from the village pub. They give you 35 gold for meals
-            that will never be delivered. I hope you can live with yourself. 
-        `,
+            that will never be delivered. I hope you can live with yourself.`,
         hp: 0,
         gold: 35
     }, {

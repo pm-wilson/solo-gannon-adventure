@@ -8,3 +8,6 @@ const beginAdventureButton = document.querySelector('#begin-adventure-button');
 beginAdventureButton.addEventListener('click', () => {
     window.location.href = './info-page/info.html';
 });
+
+localStorage.clear();
+console.log("local storage cleared")

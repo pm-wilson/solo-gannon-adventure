@@ -1,4 +1,4 @@
-const magicKey = "MAGICKEY"
+const magicKey = 'MAGICKEY';
 
 export function makeUser(formData) {
     return {
@@ -20,4 +20,15 @@ export function loadFromLocalStorage() {
         data = JSON.parse(stringyData);
 
     return data;
+}
+
+export function findById(array, id) {
+    for (let i = 0; i < array.length; i++) {
+        const currentArrayItem = array[i];
+
+        if (currentArrayItem.id === id) {
+            return currentArrayItem;
+        }
+    }
+    return null;
 }

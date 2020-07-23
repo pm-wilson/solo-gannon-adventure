@@ -1,0 +1,12 @@
+.map-section {
+  position: fixed;
+  top: 60px;
+  width: 80%;
+  height: 80%;
+  background-image: url("../assets/map.jpg");
+  background-size: cover;
+}
+
+a {
+  position: fixed;
+}
