@@ -12,3 +12,5 @@ form.addEventListener('submit', (e) => {
     saveToLocalStorage(user);
     window.location.href = '../list-page/map.html';
 });
+
+localStorage.clear();
