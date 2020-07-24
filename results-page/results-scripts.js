@@ -30,7 +30,7 @@ function victory(userData) {
     resultDescription.textContent = 'Victory is yours!';
     resultImage.src = '../assets/victory.jpg';
     resultMessage.textContent = 'You can now run amok through out Hyrule, the people live in fear of you and the world is yours until that pesky hero comes back.';
-    resultMessage2.textContent = 'Your coffers overflow with ' + userData.gold + ' rupees.';
+    resultMessage2.textContent = 'Your coffers overflow with ' + userData.gold + ' rupees!';
 }
 
 function missionComplete(userData) {

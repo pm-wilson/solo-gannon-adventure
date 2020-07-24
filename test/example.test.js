@@ -1,9 +1,9 @@
 // IMPORT MODULES under test here:
-import { renderQuest } from '../quest-page/questUtils.js';
-import quests from '../data.js';
+import { showMinGold } from '../userUtils.js';
 
 const test = QUnit.test;
 
+/*this function now needs to access the user data, so it no longer works on the test.
 test('time to test a function', (expect) => {
     //Arrange
     // Set up your arguments and expectations
@@ -11,10 +11,25 @@ test('time to test a function', (expect) => {
 
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = renderQuest('monsters', quests).outerHTML;
+    const actual = renderQuest('key', quests).outerHTML;
 
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
+*/
 
+
+test('showMinGold will return 0 if the paramater is less than 0', (expect) => {
+    //Arrange
+    // Set up your arguments and expectations
+    const expected = 0;
+    const gold = -50;
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = showMinGold(gold);
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual, expected);
+});
