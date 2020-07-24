@@ -37,7 +37,7 @@ function missionComplete(userData) {
     resultDescription.textContent = 'Congratulations on a mission well done';
     resultImage.src = '../assets/mission-complete.jpg';
     resultMessage.textContent = userData.questMessage.message;
-    resultMessage2.textContent = 'You walk away with ' + userData.gold + ' coins in your pocket and ' + userData.hp + 'hit points remaining.';
+    resultMessage2.textContent = 'You walk away with ' + userData.gold + ' coins in your pocket and ' + userData.hp + ' health points remaining.';
 }
 
 clickArea.addEventListener('click', () => {
