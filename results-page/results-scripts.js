@@ -10,12 +10,9 @@ const resultDescription = document.querySelector('#result-description'),
 function initializeResults() {
     const userData = loadFromLocalStorage();
 
-    console.log(userData)
-
-
     if (userData.hp <= 0) {
         earlyDeath(userData);
-    } else if (userData.completed.length === quests.length) {
+    } else if (Object.keys(userData.completed).length === quests.length) {
         victory(userData);
     } else {
         missionComplete(userData);
@@ -24,7 +21,7 @@ function initializeResults() {
 
 function earlyDeath(userData) {
     resultDescription.textContent = 'Unfortunately, you did not survive.';
-    resultImage.src = '../assets.dead.jpg';
+    resultImage.src = '../assets/dead.jpg';
     resultMessage.textContent = userData.questMessage.dyingmessage;
     resultMessage2.textContent = 'You die with ' + userData.gold + ' gold coins in your pocket that the next adventurer gladly pockets..';
 }
@@ -46,7 +43,11 @@ function missionComplete(userData) {
 clickArea.addEventListener('click', () => {
     const userData = loadFromLocalStorage();
 
-    if (userData.hp > 0 && userData.completed.length !== quests.length) {
+    if (userData.hp <= 0) {
+        window.location.href = '../index.html';
+    } else if (Object.keys(userData.completed).length === quests.length) {
+        window.location.href = '../index.html';
+    } else {
         window.location.href = '../list-page/map.html';
     }
 });

@@ -16,6 +16,7 @@ function initializeMap() {
 
         if (userData.completed[currentQuest.id]) {
             questLink.style.textDecoration = 'line-through';
+            questLink.classList.add('completed');
         } else {
             questLink.href = '../quest-page/quest.html?id=' + currentQuest.id;
         }

@@ -10,4 +10,4 @@ beginAdventureButton.addEventListener('click', () => {
 });
 
 localStorage.clear();
-console.log("local storage cleared")
+console.log('local storage cleared')

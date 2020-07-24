@@ -4,11 +4,33 @@ export function makeUser(formData) {
     return {
         name: formData.get('name'),
         class: formData.get('class'),
-        hp: 35,
-        gold: 0,
+        hp: getHP(formData.get('class')),
+        gold: getGP(formData.get('class')),
         completed: {},
         questMessage: {}
     };
+}
+
+function getHP(playerClass) {
+    const randomAmount = Math.floor(Math.random() * 25);
+
+    switch (playerClass) {
+        case 'strong': return randomAmount + 200;
+        case 'not-broke': return randomAmount + 100;
+        case 'not-weak': return randomAmount + 50;
+        default: return randomAmount + 25;
+    }
+}
+
+function getGP(playerClass) {
+    const randomAmount = Math.floor(Math.random() * 50);
+
+    switch (playerClass) {
+        case 'strong': return randomAmount + 5;
+        case 'not-broke': return randomAmount + 10;
+        case 'not-weak': return randomAmount + 200;
+        default: return randomAmount + 1000;
+    }
 }
 
 export function saveToLocalStorage(dataToSave) {
