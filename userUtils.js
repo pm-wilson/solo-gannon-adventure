@@ -1,4 +1,4 @@
-const magicKey = 'MAGICKEY';
+const MAGIC_KEY = 'MAGICKEY';
 
 export function makeUser(formData) {
     return {
@@ -6,17 +6,18 @@ export function makeUser(formData) {
         class: formData.get('class'),
         hp: 35,
         gold: 0,
-        completed: {}
+        completed: {},
+        questMessage: {}
     };
 }
 
 export function saveToLocalStorage(dataToSave) {
     const stringyData = JSON.stringify(dataToSave);
-    localStorage.setItem(magicKey, stringyData);
+    localStorage.setItem(MAGIC_KEY, stringyData);
 }
 
 export function loadFromLocalStorage() {
-    const stringyData = localStorage.getItem(magicKey),
+    const stringyData = localStorage.getItem(MAGIC_KEY),
         data = JSON.parse(stringyData);
 
     return data;

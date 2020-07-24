@@ -5,6 +5,7 @@
   height: 80%;
   background-image: url("../assets/map.jpg");
   background-size: cover;
+  color: green;
 }
 
 a {

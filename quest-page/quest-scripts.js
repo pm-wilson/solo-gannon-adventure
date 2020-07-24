@@ -1,4 +1,4 @@
-import { findById } from '../userUtils.js';
+import { findById, loadFromLocalStorage, saveToLocalStorage } from '../userUtils.js';
 import quests from '../data.js';
 
 export function renderQuest(questId, questData) {
@@ -19,11 +19,6 @@ export function renderQuest(questId, questData) {
     p.textContent = currentQuestData.description;
 
     button.textContent = 'Submit';
-    button.addEventListener('submit', () => {
-        const userClicked = currentQuestData.id;
-
-        console.log(userClicked)
-    });
 
     for (let i = 0; i < currentQuestData.choices.length; i++) {
         const currentChoices = currentQuestData.choices[i],
@@ -54,6 +49,26 @@ function initializeQuestPage() {
 
     questArea.append(divToAppend);
 
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form),
+            userSelect = formData.get('choice'),
+            currentQuestData = findById(quests, questId),
+            userData = loadFromLocalStorage(),
+            currentDecision = findById(currentQuestData.choices, userSelect),
+            choiceHPMod = currentDecision.hp,
+            choiceGPMod = currentDecision.gold;
+
+        userData.hp += choiceHPMod;
+        userData.gold += choiceGPMod;
+        userData.questMessage = currentDecision.result;
+        userData.completed[questId] = true;
+        saveToLocalStorage(userData)
+        window.location.href = '../results-page/results.html';
+    });
 }
 
 initializeQuestPage();

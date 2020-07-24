@@ -10,29 +10,35 @@ const monsters = {
     choices: [{
         id: 'negotiate',
         description: 'Negotiate with them',
-        result: `Knowing the monsters are not too bright, you offer to go buy them all
-            turkey dinners from the village pub. They give you 35 gold for meals
-            that will never be delivered. I hope you can live with yourself.`,
+        result: {
+            message: `Knowing the monsters are not too bright, you offer to go buy them all
+        turkey dinners from the village pub. They give you 35 gold for meals
+        that will never be delivered. I hope you can live with yourself.`, dyingmessage: 'You should have known you were too weak for this'
+        },
         hp: 0,
         gold: 35
     }, {
         id: 'fight',
         description: 'Fiiiiiggghhhttt!',
-        result: `
+        result: {
+            message: `
             Brandishing your sword you let out a warrior's cry and charge into the monsters
             hacking and slashing. Before long you stand panting gazing across the bodies of
             your vanquished foes. The bad news is you take 30 hp damage. The good news is you
             find 50 gold.
-        `,
+        `, dyingmessage: 'you didnt make it'
+        },
         hp: -30,
         gold: 50
     }, {
         id: 'run',
         description: 'Run away like good Sir Robin',
-        result: `
+        result: {
+            message: `
             As you make a dash for the door a giant spider descends and take a bite of flesh,
             causing 50 hp damage.
-        `,
+        `, dyingmessage: 'youre a pansy'
+        },
         hp: -50,
         gold: 0
     }]
@@ -57,37 +63,34 @@ const dragon = {
     choices: [{
         id: 'run',
         description: 'Get the hell out of the village',
-        result: `
-            You high tail it in the opposite direction. Luckily,
-            in the panic you find a bag on the ground with 15 gold.
-            Unluckily, you trip over a discarded wagon wheel on your
-            way out of town and take 40 hp damage. 
-        `,
+        result: {
+            message: `
+            As you make a dash for the door a giant spider descends and take a bite of flesh,
+            causing 50 hp damage.
+        `, dyingmessage: 'youre a pansy'
+        },
         hp: -35,
         gold: 35
     }, {
         id: 'fight',
         description: 'Fiiiiiggghhhttt!',
-        result: `
-            You attempt to charge towards the dragon, who sees you approach
-            and let's loose a fireball. You wake up the next morning and the
-            village has been completely burned to the ground.
-            Oh, and you take 45 hp damage.
-        `,
+        result: {
+            message: `
+            As you make a dash for the door a giant spider descends and take a bite of flesh,
+            causing 50 hp damage.
+        `, dyingmessage: 'youre a pansy'
+        },
         hp: -45,
         gold: 0
     }, {
         id: 'archer',
         description: 'Emulate that guy from LOR who shot an arrow',
-        result: `
-            Inspired by the legend of Bard the Bowman, you notice a
-            stunned archer standing nearby and take their bow and quiver,
-            climb to the top of a tall tower and take aim. On the dragon's
-            next pass you steady your aim and let one fly. Amazingly,
-            you strike the dragon in the eye, piercing into the brain and
-            killing the dragon instantly. The villagers declare you their hero
-            and award you 90 gold.
-        `,
+        result: {
+            message: `
+            As you make a dash for the door a giant spider descends and take a bite of flesh,
+            causing 50 hp damage.
+        `, dyingmessage: 'youre a pansy'
+        },
         hp: 0,
         gold: 90
     }]
@@ -113,19 +116,34 @@ const treasure = {
     choices: [{
         id: 'wooden',
         description: 'A Wooden Chest',
-        result: 'You grab 40 gold pieces!',
+        result: {
+            message: `
+            As you make a dash for the door a giant spider descends and take a bite of flesh,
+            causing 50 hp damage.
+        `, dyingmessage: 'youre a pansy'
+        },
         hp: 0,
         gold: 40
     }, {
         id: 'golden',
         description: 'A Golden Chest',
-        result: 'Oh no! The chest is booby trapped with poison and you take 50 hp damage',
+        result: {
+            message: `
+            As you make a dash for the door a giant spider descends and take a bite of flesh,
+            causing 50 hp damage.
+        `, dyingmessage: 'youre a pansy'
+        },
         hp: -50,
         gold: 0
     }, {
         id: 'jeweled',
         description: 'A Jeweled Chest',
-        result: 'A warm light engulfs you and you gain 35 hp',
+        result: {
+            message: `
+            As you make a dash for the door a giant spider descends and take a bite of flesh,
+            causing 50 hp damage.
+        `, dyingmessage: 'youre a pansy'
+        },
         hp: 35,
         gold: 0
     }]
@@ -154,19 +172,34 @@ const quests = [
         choices: [{
             id: 'wooden',
             description: 'WOW',
-            result: 'You grab 40 gold pieces!',
+            result: {
+                message: `
+                As you make a dash for the door a giant spider descends and take a bite of flesh,
+                causing 50 hp damage.
+            `, dyingmessage: 'youre a pansy'
+            },
             hp: 0,
             gold: 40
         }, {
             id: 'golden',
             description: 'NOW',
-            result: 'Oh no! The chest is booby trapped with poison and you take 50 hp damage',
+            result: {
+                message: `
+                As you make a dash for the door a giant spider descends and take a bite of flesh,
+                causing 50 hp damage.
+            `, dyingmessage: 'youre a pansy'
+            },
             hp: -50,
             gold: 0
         }, {
             id: 'jeweled',
             description: 'POW',
-            result: 'A warm light engulfs you and you gain 35 hp',
+            result: {
+                message: `
+                As you make a dash for the door a giant spider descends and take a bite of flesh,
+                causing 50 hp damage.
+            `, dyingmessage: 'youre a pansy'
+            },
             hp: 35,
             gold: 0
         }
