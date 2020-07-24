@@ -5,4 +5,14 @@ label {
 form {
   margin-top: 5px;
   margin-left: 5px;
+  width: 500px;
+}
+
+.disabled {
+  text-decoration: line-through;
+}
+
+img {
+  width: 300px;
+  height: auto;
 }

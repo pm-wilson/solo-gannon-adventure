@@ -1,7 +1,8 @@
-import { findById } from '../userUtils.js';
+import { findById, loadFromLocalStorage } from '../userUtils.js';
 
 export function renderQuest(questId, questData) {
-    const containerDiv = document.createElement('div'),
+    const userData = loadFromLocalStorage(),
+        containerDiv = document.createElement('div'),
         currentQuestData = findById(questData, questId),
         h3 = document.createElement('h3'),
         h3Text = currentQuestData.title,
@@ -22,12 +23,21 @@ export function renderQuest(questId, questData) {
     for (let i = 0; i < currentQuestData.choices.length; i++) {
         const currentChoices = currentQuestData.choices[i],
             currentLabel = document.createElement('label'),
-            currentInput = document.createElement('input');
+            currentInput = document.createElement('input'),
+            enoughGold = hasEnoughGoldForChoice(userData.gold, currentChoices.gold);
 
         currentLabel.textContent = currentChoices.description;
-
         currentInput.type = 'radio';
-        currentInput.name = 'choice';
+
+        if (enoughGold) {
+            currentInput.name = 'choice';
+        } else {
+            currentInput.name = 'disabled';
+            currentLabel.classList.add('disabled');
+            currentInput.disabled = true;
+            currentLabel.textContent += ' (If only you had more rupees)';
+        }
+
         currentInput.value = currentChoices.id;
 
         currentLabel.append(currentInput);
@@ -38,4 +48,13 @@ export function renderQuest(questId, questData) {
     containerDiv.append(h3, img, p, form);
 
     return containerDiv;
+}
+
+function hasEnoughGoldForChoice(userGold, choiceGold) {
+    const choiceGoldNeeded = choiceGold * -1;
+
+    if (userGold >= choiceGoldNeeded) {
+        return true;
+    }
+    return false;
 }

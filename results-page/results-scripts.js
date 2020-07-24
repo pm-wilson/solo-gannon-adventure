@@ -23,21 +23,21 @@ function earlyDeath(userData) {
     resultDescription.textContent = 'Unfortunately, you did not survive.';
     resultImage.src = '../assets/dead.jpg';
     resultMessage.textContent = userData.questMessage.dyingmessage;
-    resultMessage2.textContent = 'You die with ' + userData.gold + ' gold coins in your pocket that the next adventurer gladly pockets..';
+    resultMessage2.textContent = 'You die with ' + userData.gold + ' rupees in your pocket, the pesants will eat well today.';
 }
 
 function victory(userData) {
-    resultDescription.textContent = 'Victory is yours';
+    resultDescription.textContent = 'Victory is yours!';
     resultImage.src = '../assets/victory.jpg';
-    resultMessage.textContent = 'You have solved all the quests';
-    resultMessage2.textContent = 'You retire with ' + userData.gold + ' gold.';
+    resultMessage.textContent = 'You can now run amok through out Hyrule, the people live in fear of you and the world is yours until that pesky hero comes back.';
+    resultMessage2.textContent = 'Your coffers overflow with ' + userData.gold + ' rupees.';
 }
 
 function missionComplete(userData) {
-    resultDescription.textContent = 'Congratulations on a mission well done';
+    resultDescription.textContent = 'Congratulations on a mission well done! Click the image to continue.';
     resultImage.src = '../assets/mission-complete.jpg';
     resultMessage.textContent = userData.questMessage.message;
-    resultMessage2.textContent = 'You walk away with ' + userData.gold + ' coins in your pocket and ' + userData.hp + ' health points remaining.';
+    resultMessage2.textContent = 'You walk away with ' + userData.gold + ' rupees in your pocket and ' + userData.hp + ' health points remaining.';
 }
 
 clickArea.addEventListener('click', () => {

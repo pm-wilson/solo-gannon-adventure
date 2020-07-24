@@ -63,3 +63,8 @@ section {
   border: solid var(--color1) 5px;
   border-radius: 5px;
 }
+
+p {
+  text-indent: 20px;
+  margin: 5px;
+}

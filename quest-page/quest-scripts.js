@@ -1,4 +1,4 @@
-import { findById, loadFromLocalStorage, saveToLocalStorage } from '../userUtils.js';
+import { findById, loadFromLocalStorage, saveToLocalStorage, showMinGold } from '../userUtils.js';
 import quests from '../data.js';
 import { renderQuest } from './questUtils.js';
 
@@ -27,6 +27,9 @@ function initializeQuestPage() {
 
         userData.hp += choiceHPMod;
         userData.gold += choiceGPMod;
+        if (userData.gold < 0) {
+            userData.gold = 0;
+        }
         userData.questMessage = currentDecision.result;
         userData.completed[questId] = true;
         saveToLocalStorage(userData);
@@ -34,7 +37,7 @@ function initializeQuestPage() {
     });
 
     hpDisplay.textContent = userData.hp;
-    gpDisplay.textContent = userData.gold;
+    gpDisplay.textContent = showMinGold(userData.gold);
 }
 
 initializeQuestPage();

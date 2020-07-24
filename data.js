@@ -1,210 +1,152 @@
-const monsters = {
-    id: 'monsters',
-    title: 'A Den of Monsters',
+const sword = {
+    id: 'sword',
+    title: 'Sword that Steals the Darkness',
     map: {
         top: '79%',
         left: '44%'
     },
-    image: 'monsters.jpg',
-    description: `You enter the quest chamber only to be confronted by a hoard of monsters. And they look hungry. What do you do?`,
+    image: 'sword.jpg',
+    description: `You track down the location of the sword and arrive at the place. There is a guard at the door, what do you do?`,
     choices: [{
-        id: 'negotiate',
-        description: 'Negotiate with them',
+        id: 'bribe',
+        description: 'Knowing he can always use more rupees, you offer a bribe',
         result: {
-            message: `Knowing the monsters are not too bright, you offer to go buy them all
-        turkey dinners from the village pub. They give you 35 gold for meals
-        that will never be delivered. I hope you can live with yourself.`, dyingmessage: 'You should have known you were too weak for this'
+            message: `You bribe the guard and easily get to the sword, but then he notices what you are up to and manages to hit you with an arrow as you disappear into the darkness. You have the sword, but it ends up costing you 2 health and 500 rupees.`, dyingmessage: `You should have known better than to bribe a guard, he sees through your plan and attacks you when you go for the sword. You don't survive`
         },
-        hp: 0,
-        gold: 35
+        hp: -2,
+        gold: -500
     }, {
         id: 'fight',
-        description: 'Fiiiiiggghhhttt!',
+        description: 'Attack!',
         result: {
-            message: `
-            Brandishing your sword you let out a warrior's cry and charge into the monsters
-            hacking and slashing. Before long you stand panting gazing across the bodies of
-            your vanquished foes. The bad news is you take 30 hp damage. The good news is you
-            find 50 gold.
-        `, dyingmessage: 'you didnt make it'
-        },
-        hp: -30,
-        gold: 50
-    }, {
-        id: 'run',
-        description: 'Run away like good Sir Robin',
-        result: {
-            message: `
-            As you make a dash for the door a giant spider descends and take a bite of flesh,
-            causing 50 hp damage.
-        `, dyingmessage: 'youre a pansy'
+            message: `As you approach the guard he doesn't seem concerned. These peaceful times are making the people weak. You attack the guard and he fights back well enough. You lose 50 health, but find 25 rupees on his corpse.`, dyingmessage: `The guard is tougher than he looks and makes short work of you.`
         },
         hp: -50,
-        gold: 0
+        gold: 25
+    }, {
+        id: 'run',
+        description: 'Sneak around to the back',
+        result: {
+            message: `You look around the building and find a back door that isn't guarded. You slip inside and manage to disappear into the night with the sword along with 20 rupees you found on a table.`, dyingmessage: 'You truly are weak, there should have been no way to get hurt with this option!'
+        },
+        hp: 0,
+        gold: 20
     }]
 };
 
-const dragon = {
-    id: 'dragon',
-    title: 'A Problem Dragon',
+const book = {
+    id: 'book',
+    title: 'Ancient Book of Wisdom',
     map: {
         top: '57%',
         left: '67%'
     },
-    image: 'dragon.jpg',
-    audio: 'dragon.wav',
-    action: 'dragon-growl.aiff',
-    description: `
-        You travel to a nearby village you have heard is being
-        terrorized by a dragon. Sure enough as you rent a room
-        in a local inn, you go outside and see the dragon about
-        to lay seige! What do you do?
-    `,
+    image: 'book.png',
+    description: `You travel to Hyrule's biggest library and locate the room that holds the Ancient Book of Wisdom. Knowing this book has all the spells you will soon need to take over the world you make a decision on how to get it.`,
     choices: [{
-        id: 'run',
-        description: 'Get the hell out of the village',
+        id: 'steal',
+        description: 'Climb a tapestry to get access to the book',
         result: {
-            message: `
-            As you make a dash for the door a giant spider descends and take a bite of flesh,
-            causing 50 hp damage.
-        `, dyingmessage: 'youre a pansy'
+            message: `You climb the tapestry to get access to the upper floor where the book is stored and swipe it easily enough. As you are making your escape, you are discovered and have to jump out of a window. You take 60 damage from the fall, but survive with the book.`, dyingmessage: 'As you are climbing the tapestry it starts to rip and you fall on your head and never wake up.'
         },
-        hp: -35,
-        gold: 35
-    }, {
-        id: 'fight',
-        description: 'Fiiiiiggghhhttt!',
-        result: {
-            message: `
-            As you make a dash for the door a giant spider descends and take a bite of flesh,
-            causing 50 hp damage.
-        `, dyingmessage: 'youre a pansy'
-        },
-        hp: -45,
+        hp: -60,
         gold: 0
     }, {
-        id: 'archer',
-        description: 'Emulate that guy from LOR who shot an arrow',
+        id: 'fight',
+        description: 'Take it by force',
         result: {
-            message: `
-            As you make a dash for the door a giant spider descends and take a bite of flesh,
-            causing 50 hp damage.
-        `, dyingmessage: 'youre a pansy'
+            message: `You threaten the librarian and they give up the book easily enough, but you encounter a guard on your way out and have a good battle. You end up taking 65 damage and find 30 rupees on him as you get away.`, dyingmessage: 'The librarian is much more formadible than you thought and uses an old math book to destroy you, whoever thought math would be this deadly?!'
         },
-        hp: 0,
-        gold: 90
+        hp: -45,
+        gold: 30
+    }, {
+        id: 'bribe',
+        description: 'Bribe the librarian with chocolate',
+        result: {
+            message: `You stop outside and buy the largest box of chocolates sold at the market and use it to bribe the librarian to check out the book. It costs you 350 rupees and 1 health for stuffing yourself with some chocolates too. You easily walk out of the library with it, no need to worry about the return date.`, dyingmessage: 'You decide to indulge in some chocolate as you walk into the library and choke on a peanut. Who the hell put a peanut in your chocolate? You curse their existence as the world fades away.'
+        },
+        hp: -1,
+        gold: -350
     }]
 };
 
-const treasure = {
-    id: 'treasure',
-    title: 'The Golden Treasure',
+const bracelet = {
+    id: 'bracelet',
+    title: 'The Bracelet of Power',
     map: {
         top: '31%',
         left: '5%'
     },
-    image: 'treasure-chests.png',
-    audio: 'treasure-chests.wav',
-    action: 'chest-opening.wav',
-    description: `
-        As you enter the quest chamber you notice three chests before you.
-        Just as you start to imagine the wealth, you see a giant serpent
-        emerge from the back of the chamber. You'll need to make a run for it,
-        but you have time to open one chest before you take off. Which one 
-        do you choose?
-    `,
+    image: 'bracelet.jpg',
+    description: `In order to build some of your dungeons you will need to obtain the Bracelet of Power. Luckily you know exactly where it is at, unfortunately it is at the top of a great spire. How do you go about getting it?`,
     choices: [{
-        id: 'wooden',
-        description: 'A Wooden Chest',
+        id: 'climb',
+        description: 'Climb Up',
         result: {
-            message: `
-            As you make a dash for the door a giant spider descends and take a bite of flesh,
-            causing 50 hp damage.
-        `, dyingmessage: 'youre a pansy'
+            message: `You climb the tower carefully and arrive at the top. After grabbing the bracelet and looting some treasure boxes in the area for 80 rupees, you head down. Half way down you slip and take 102 damage from the fall. It hurt, but you are tough.`, dyingmessage: 'You slip on the way up and fall to your doom.'
         },
-        hp: 0,
-        gold: 40
+        hp: -102,
+        gold: 80
     }, {
-        id: 'golden',
-        description: 'A Golden Chest',
+        id: 'bribe',
+        description: 'Pay a Pesant',
         result: {
-            message: `
-            As you make a dash for the door a giant spider descends and take a bite of flesh,
-            causing 50 hp damage.
-        `, dyingmessage: 'youre a pansy'
+            message: `You find the strongest pesant in the area and offer him 300 rupees to climb up and pull you up behind him. It is uncomfortable and you take 1 damage, but get the bracelet relatively unharmed.`, dyingmessage: 'The pesant slips as he pulls you up and both of you fall to your doom. There were no survivors.'
         },
-        hp: -50,
-        gold: 0
+        hp: -1,
+        gold: -300
     }, {
-        id: 'jeweled',
-        description: 'A Jeweled Chest',
+        id: 'stairs',
+        description: 'Search for Stairs',
         result: {
-            message: `
-            As you make a dash for the door a giant spider descends and take a bite of flesh,
-            causing 50 hp damage.
-        `, dyingmessage: 'youre a pansy'
+            message: `You find some stairs conveinently going up the back of the spire. As you walk up, the famous stone rain of Hyrule begins to fall in the form of giant boulders. You suffer 78 damage, but find some random equipment that you later sell for 30 rupees`, dyingmessage: 'You dont find any stairs, but you do find a bottomless pit and continue to fall for days and that is the last thing you remember.'
         },
-        hp: 35,
-        gold: 0
+        hp: -78,
+        gold: 30
+    }]
+};
+
+const key = {
+    id: 'key',
+    title: 'The Magic Key',
+    map: {
+        top: '61%',
+        left: '45%'
+    },
+    image: 'key.jpg',
+    description: `You will be locking and unlocking many doors as you rise to power and take over the world so you head to where you know the Magic Key is hidden. It is guarded by the queen of faries. What do you do?`,
+    choices: [{
+        id: 'fight',
+        description: 'Take the Fairy and the Key',
+        result: {
+            message: `You attack the fairy and as soon as you make contact you freeze and can feel the warmth of life going into you. You gain 50 health. As you recover you realize the fairy has disappeared and you now have the key.`, dyingmessage: 'There is seriously no way this can hurt you.'
+        },
+        hp: 50,
+        gold: 80
+    }, {
+        id: 'bribe',
+        description: 'Pay the Fairy',
+        result: {
+            message: `You leave 550 rupees where the fairy can see it and sneak around the back of the lake to steal the key. You arent the best swimmer and take 3 damage as you breathe in some water.`, dyingmessage: 'You distract the fairy with some rupees and swim out into the lake to get the key, unfortunately you can not swim and the last thing you remember is the sun flickering through the water.'
+        },
+        hp: -3,
+        gold: -550
+    }, {
+        id: 'distract',
+        description: 'Distract with a pesant',
+        result: {
+            message: `You purchase some equpment for 40 rupees and build a trap for a pesant near by. As the trap goes off it not only injurs the pesant but you too. you suffer 60 damage, but manage to get the pesant carried off to the fairy. While healing the pesant you slip in and steal the key`, dyingmessage: 'You build a trap hoping to distract the fairy with a wounded pesant. Unfortunately the trap backfires and you crush yourself with a log.'
+        },
+        hp: -40,
+        gold: -60
     }]
 };
 
 const quests = [
-    monsters,
-    treasure,
-    dragon, {
-        id: 'pleasure',
-        title: 'The Bold Folding Pleasure',
-        map: {
-            top: '61%',
-            left: '10%'
-        },
-        image: 'treasure-chests.png',
-        audio: 'treasure-chests.wav',
-        action: 'chest-opening.wav',
-        description: `
-        As you enter the quest chamber you notice three chests before you.
-        Just as you start to imagine the wealth, you see a giant serpent
-        emerge from the back of the chamber. You'll need to make a run for it,
-        but you have time to open one chest before you take off. Which one 
-        do you choose?
-    `,
-        choices: [{
-            id: 'wooden',
-            description: 'WOW',
-            result: {
-                message: `
-                As you make a dash for the door a giant spider descends and take a bite of flesh,
-                causing 50 hp damage.
-            `, dyingmessage: 'youre a pansy'
-            },
-            hp: 0,
-            gold: 40
-        }, {
-            id: 'golden',
-            description: 'NOW',
-            result: {
-                message: `
-                As you make a dash for the door a giant spider descends and take a bite of flesh,
-                causing 50 hp damage.
-            `, dyingmessage: 'youre a pansy'
-            },
-            hp: -50,
-            gold: 0
-        }, {
-            id: 'jeweled',
-            description: 'POW',
-            result: {
-                message: `
-                As you make a dash for the door a giant spider descends and take a bite of flesh,
-                causing 50 hp damage.
-            `, dyingmessage: 'youre a pansy'
-            },
-            hp: 35,
-            gold: 0
-        }
-        ]
-    }
+    sword,
+    book,
+    bracelet,
+    key
 ];
 
 export default quests;

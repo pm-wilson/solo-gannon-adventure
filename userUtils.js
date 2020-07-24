@@ -55,3 +55,10 @@ export function findById(array, id) {
     }
     return null;
 }
+
+export function showMinGold(currentGold) {
+    if (currentGold < 0) {
+        return 0;
+    }
+    return currentGold;
+}
